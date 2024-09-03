@@ -18,7 +18,12 @@ connectCloudinary();
 
 //middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://abg-music-frnt.vercel.app",
+    allowedHeaders: ["Content-Type", "Authorization", "auth-token"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true
+}))
 
 //initializing routes
 app.use("/api/song", songRouter)
